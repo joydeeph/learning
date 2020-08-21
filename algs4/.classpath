@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="test/collinear"/>
+	<classpathentry kind="src" path="test/percolation"/>
+	<classpathentry kind="src" path="src/collinear"/>
+	<classpathentry kind="src" path="src/randomqueue"/>
+	<classpathentry kind="src" path="test/randomqueue"/>
+	<classpathentry kind="src" path="src/percolation"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/algs4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
