@@ -10,7 +10,8 @@ public class PercolationStats {
   private double[] threshold;
 
   /**
-   * Initializes an simulation runner for T independent experiments on an N-by-N grid.
+   * Initializes an simulation runner for T independent experiments on an N-by-N
+   * grid.
    * 
    * @param size
    *          the size of the grid
@@ -90,7 +91,7 @@ public class PercolationStats {
     System.out.println("mean                    = " + stats.mean());
     System.out.println("stddev                  = " + stats.stddev());
     System.out.println("95% confidence interval = [" + stats.confidenceLo() + ", "
-        + stats.confidenceHi() +"]");
+        + stats.confidenceHi() + "]");
 
   }
 }

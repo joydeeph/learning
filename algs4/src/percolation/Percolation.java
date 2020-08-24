@@ -7,8 +7,10 @@ public class Percolation {
   private final WeightedQuickUnionUF unionFindSingleTop;
   private final int size;
   private int numberOfOpenSites = 0;
+
   /**
-   * Initializes an empty percolation data structure with N-by-N grid, with all sites blocked.
+   * Initializes an empty percolation data structure with N-by-N grid, with all sites
+   * blocked.
    * 
    * @param size
    *          the size of the grid
@@ -51,7 +53,8 @@ public class Percolation {
         adjcol = col;
         if (isOpen(adjrow, adjcol)) {
           unionFind.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
-          unionFindSingleTop.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
+          unionFindSingleTop.union((adjrow - 1) * size + adjcol,
+              (row - 1) * size + col);
         }
       } catch (IllegalArgumentException ex) {
         // do nothing
@@ -61,7 +64,8 @@ public class Percolation {
         adjcol = col;
         if (isOpen(adjrow, adjcol)) {
           unionFind.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
-          unionFindSingleTop.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
+          unionFindSingleTop.union((adjrow - 1) * size + adjcol,
+              (row - 1) * size + col);
         }
       } catch (IllegalArgumentException ex) {
         // do nothing
@@ -71,7 +75,8 @@ public class Percolation {
         adjcol = col + 1;
         if (isOpen(adjrow, adjcol)) {
           unionFind.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
-          unionFindSingleTop.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
+          unionFindSingleTop.union((adjrow - 1) * size + adjcol,
+              (row - 1) * size + col);
         }
       } catch (IllegalArgumentException ex) {
         // do nothing
@@ -81,7 +86,8 @@ public class Percolation {
         adjcol = col - 1;
         if (isOpen(adjrow, adjcol)) {
           unionFind.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
-          unionFindSingleTop.union((adjrow - 1) * size + adjcol, (row - 1) * size + col);
+          unionFindSingleTop.union((adjrow - 1) * size + adjcol,
+              (row - 1) * size + col);
         }
       } catch (IllegalArgumentException ex) {
         // do nothing
@@ -89,7 +95,7 @@ public class Percolation {
       if (row == 1) {
         unionFind.union(col, 0);
         unionFindSingleTop.union(col, 0);
-      } 
+      }
       if (row == size) {
         unionFind.union((row - 1) * size + col, size * size + 1);
       }
@@ -131,12 +137,15 @@ public class Percolation {
   public boolean isFull(int row, int col) {
     validate(row, col);
 
-    return unionFindSingleTop.find(0) == unionFindSingleTop.find((row - 1) * size + col);
+    return unionFindSingleTop.find(0) == unionFindSingleTop
+        .find((row - 1) * size + col);
   }
+
   // returns the number of open sites
   public int numberOfOpenSites() {
     return numberOfOpenSites;
   }
+
   // does the system percolate?
   public boolean percolates() {
     return unionFind.find(0) == unionFind.find(size * size + 1);
@@ -144,7 +153,7 @@ public class Percolation {
 
   // test client (optional)
   public static void main(String[] args) {
-      System.out.println("Hello percolation");
+    System.out.println("Hello percolation");
   }
 
 }

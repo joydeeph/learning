@@ -69,7 +69,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
   // an iterator, doesn't implement remove() since it's optional
   private class ArrayIterator implements Iterator<Item> {
     private int idx = 0;
-    private final int [] index;
+    private final int[] index;
 
     public ArrayIterator() {
       index = new int[size];
@@ -91,8 +91,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       if (!hasNext()) {
         throw new NoSuchElementException();
       }
-      return array[index[idx++]];  
+      return array[index[idx++]];
     }
+
     // Knuth suffle
     private void shuffle(int[] inputArray) {
       int size = inputArray.length;
