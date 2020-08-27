@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Iterator;
 
 import edu.princeton.cs.algs4.ResizingArrayBag;
@@ -8,17 +9,20 @@ public class BruteCollinearPoints {
 
   // finds all line segments containing 4 points
   public BruteCollinearPoints(Point[] points) {
-    for (int i = 0; i < points.length; i++) {
-      for (int j = i + 1; j < points.length; j++) {
-        for (int k = j + 1; k < points.length; k++) {
-          for (int l = k + 1; l < points.length; l++) {
-            Point p = points[i];
-            Point q = points[j];
-            Point r = points[k];
-            Point s = points[l];
+    Point[] sortedPoints = validate(points);
+    
+    Point min = null;
+    for (int i = 0; i < sortedPoints.length; i++) {
+      for (int j = i + 1; j < sortedPoints.length; j++) {
+        for (int k = j + 1; k < sortedPoints.length; k++) {
+          for (int m = k + 1; m < sortedPoints.length; m++) {
+            Point p = sortedPoints[i];
+            Point q = sortedPoints[j];
+            Point r = sortedPoints[k];
+            Point s = sortedPoints[m];
             double pSlopeToQ = p.slopeTo(q);
             if (pSlopeToQ == p.slopeTo(r) && pSlopeToQ == p.slopeTo(s)) {
-              Point min = p;
+                min = p;
               if (min.compareTo(q) > 0)
                 min = q;
               if (min.compareTo(r) > 0)
@@ -53,5 +57,24 @@ public class BruteCollinearPoints {
       segmentArray[i] = itr.next();
     }
     return segmentArray;
+  }
+  private Point[] validate(Point[] points) {
+    if (points == null) {
+      throw new IllegalArgumentException();
+    }
+    for (int k = 0; k < points.length; k++) {
+      if (points[k] == null)
+        throw new IllegalArgumentException();
+    }
+    Point[] sortedPoints = Arrays.copyOf(points, points.length);
+    Arrays.sort(sortedPoints);
+    Point min = sortedPoints[0];
+    for (int k = 1; k < sortedPoints.length; k++) {
+      if (sortedPoints[k].compareTo(min) == 0)
+        throw new IllegalArgumentException();
+      else
+        min = sortedPoints[k];
+    }
+    return sortedPoints;
   }
 }
