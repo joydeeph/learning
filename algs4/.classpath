@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="test/collinear"/>
+	<classpathentry kind="src" path="test/kdtree"/>
+	<classpathentry kind="src" path="src/kdtree"/>
 	<classpathentry kind="src" path="src/8puzzle"/>
 	<classpathentry kind="src" path="test/8puzzle"/>
 	<classpathentry kind="src" path="test/percolation"/>
